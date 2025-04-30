@@ -31,12 +31,10 @@ export default async function handler(req, res) {
 
     if (apiKey === null) {
       console.error("API Key is null, get yours at dashboard.veriph.one");
-      res
-        .status(500)
-        .json({
-          error:
-            "API Key has not been configured, get yours at dashboard.veriph.one",
-        });
+      res.status(500).json({
+        error:
+          "API Key has not been configured, get yours at dashboard.veriph.one",
+      });
       return;
     }
 
@@ -69,7 +67,7 @@ export default async function handler(req, res) {
       res.redirect(307, sessionCreationResponse.redirectionUrl);
     } else {
       console.error(response);
-      // If something goes wrong, we return to the last page and shown an error
+      // If something goes wrong, we return to the last page and show an error
       res.redirect(307, "/?error=10");
     }
   } catch (error) {
